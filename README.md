@@ -5,6 +5,16 @@ Dust
 
 #### <http://akdubya.github.com/dustjs> #
 
+Local Modifications
+--------------------
+
+dust.js has been modified to fit a little better with how I (benno) use it with node. Specifically, with the existing approach the `cache` was a module global mutable data structure. This isn't ideal as it forces a single global namespace for template names, which I did not want to do.
+
+To avoid massive restructuring the dust module now provides a single (quite expensive) `create` function call. This can be used to effectively create multiple dust instances, and therefore isolated template namespaces.
+
+The object returned by `create` provides all the methods and functionality normally available from the dust module.
+
+
 Why?
 ----
 
